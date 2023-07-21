@@ -22,7 +22,7 @@ export class ResultActions extends BaseActions {
 
     async getTheFirstMinimumPriceInResults ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
-      const TheFirstPriceInString = await new ResultPage(page, context).TheFirstCar.allTextContents();       // получаем цену первого кара после фильтрации
+      const TheFirstPriceInString = await new ResultPage(page, context).TheFirstCar.allTextContents();       
       const TheFirstCarInNumber = TheFirstPriceInString.map(price => parseFloat(price.replace(/[^\d.-]/g, '')));  
       const a = TheFirstCarInNumber[0];   
       return a
