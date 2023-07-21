@@ -12,7 +12,7 @@ export class ResultActions extends BaseActions {
       this.resultPage = new ResultPage(page, context);
     }
     
-    async getMinPrice ({page, browser}) {
+    async getMinPrice ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const AllPricesInString = await new ResultPage(page, context).AllPricesInBYN.allTextContents();
       const AllPricesInNumber = AllPricesInString.map(price => parseFloat(price.replace(/[^\d.-]/g, '')));  
@@ -20,21 +20,21 @@ export class ResultActions extends BaseActions {
       return minPrice
     }
 
-    async getTheFirstMinimumPriceInResults ({page, browser}) {
+    async getTheFirstMinimumPriceInResults ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const TheFirstPriceInString = await new ResultPage(page, context).TheFirstCar.allTextContents();       // получаем цену первого кара после фильтрации
       const TheFirstCarInNumber = TheFirstPriceInString.map(price => parseFloat(price.replace(/[^\d.-]/g, '')));  
       const a = TheFirstCarInNumber[0];   
       return a
     }
-    async getMaxPrice ({page, browser}) {
+    async getMaxPrice ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const AllpricesInString = await new ResultPage(page, context).AllPricesInBYN.allTextContents();
       const AllpricesInNumber = AllpricesInString.map(price => parseFloat(price.replace(/[^\d.-]/g, '')));  
       const maxPrice = Math.max(...AllpricesInNumber); 
       return maxPrice
     }
-    async getTheFirstMaximumPriceInResults ({page, browser}) {
+    async getTheFirstMaximumPriceInResults ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const TheFirstPriceInString = await new ResultPage(page, context).TheFirstCar.allTextContents();       
       const TheFirstCarInNumber = TheFirstPriceInString.map(price => parseFloat(price.replace(/[^\d.-]/g, '')));  
