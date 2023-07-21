@@ -4,51 +4,51 @@ import { expect } from '@playwright/test';
 import Log from '../utils/logger.utils'
 
 test ('Sorting by cheap filter', async ({app, page, browser}) => {
-    Log.step("Открываем страницу");
+    Log.step("1. Открываем страницу");
     await app.base.openAvBy(); 
 
-    Log.step("Нажимаем на поле 'Марка'"); 
+    Log.step("2. Нажимаем на поле 'Марка'"); 
     await app.searchByParameters.clickOnMarkButton(); 
 
-    Log.step("Вводим значение", Marks.BMW);
+    Log.step("3. Вводим значение", Marks.BMW);
     await app.searchByParameters.inputMarkName(Marks.BMW);
     
-    Log.step("Ожидаем..."); 
+    Log.step("4. Ожидаем..."); 
     await app.searchByParameters.waiter(); 
 
-    Log.step("Нажимаем на Энтер");
+    Log.step("5. Нажимаем на Энтер");
     await app.searchByParameters.clickEnter(); 
 
-    Log.step("Ожидаем..."); 
+    Log.step("6. Ожидаем..."); 
     await app.searchByParameters.waiter();
 
-    Log.step("Нажимаем на поле 'Модель'"); 
+    Log.step("7. Нажимаем на поле 'Модель'"); 
     await app.searchByParameters.clickOnModelButton();
 
-    Log.step("Выбираем модель", BMWModels.X5); 
+    Log.step("8. Выбираем модель", BMWModels.X5); 
     await app.searchByParameters.chooseModel(BMWModels.X5);
 
-    Log.step("Ожидаем..."); 
+    Log.step("9. Ожидаем..."); 
     await app.searchByParameters.waiter();
 
-    Log.step("Нажимаем на кнопку 'Показать *** объявлений'"); 
+    Log.step("10. Нажимаем на кнопку 'Показать *** объявлений'"); 
     await app.searchByParameters.clickOnShowResultButton(); 
 
-    Log.step("Нажимаем на кнопку выбора типа сортировки"); 
+    Log.step("11. Нажимаем на кнопку выбора типа сортировки"); 
     await app.searchByParameters.clickOnSortingField();
 
-    Log.step("Нажимаем на 'дешёвые'"); 
+    Log.step("12. Нажимаем на 'дешёвые'"); 
     await app.searchByParameters.chooseSortingType(SortingTypes.Cheap);
 
-    Log.step("Ожидаем..."); 
+    Log.step("13. Ожидаем..."); 
     await app.searchByParameters.waiter();
     
-    Log.step("Получаем минимальную цену из массива цен"); 
+    Log.step("14. Получаем минимальную цену из массива цен"); 
     const a = await app.result.getMinPrice({page, browser}); 
 
-    Log.step("Получаем цену первого автомобиля после сортировки")
+    Log.step("15. Получаем цену первого автомобиля после сортировки")
     const b = await app.result.getTheFirstMinimumPriceInResults({page, browser}); 
 
-    Log.step("Делаем проверку...")
+    Log.step("16. Делаем проверку...")
     expect(a).toBe(b)
 })
