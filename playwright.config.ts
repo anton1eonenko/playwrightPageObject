@@ -10,13 +10,13 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './src/tests',
-  timeout: 6000000,
+  timeout: 250 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 500000
+    timeout: 20000
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
