@@ -11,10 +11,7 @@ export class ResultActions extends BaseActions {
       super(page, context);
       this.resultPage = new ResultPage(page, context);
     }
-    // async getAllPricesInBYN () {
-    //     await this.resultPage.AllPricesInBYN; 
-    // }
-
+    
     async getMinPrice ({page, browser}) {
       const context = await browser.newContext()
       const AllPricesInString = await new ResultPage(page, context).AllPricesInBYN.allTextContents();

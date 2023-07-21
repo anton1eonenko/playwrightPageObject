@@ -1,11 +1,10 @@
 import { BrowserContext, Page } from '@playwright/test';
-
 import { BaseActions } from './base/base.actions';
 import { SearchByParametersActions } from './main/search.by.parameters.actions';
 import { CompareActions } from './main/compare.actions';
 import { ResultActions } from './main/result.actions';
 
-export default class App {
+export  class App {
     base: BaseActions
     searchByParameters: SearchByParametersActions
     compare: CompareActions

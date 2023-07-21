@@ -1,0 +1,34 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const test_1 = __importDefault(require("./test"));
+const search_by_parameters_fixture_1 = require("../fixture/search.by.parameters.fixture");
+const logger_utils_1 = __importDefault(require("../utils/logger.utils"));
+(0, test_1.default)('Seach By Mark, Model and Generation', async ({ app }) => {
+    logger_utils_1.default.step("Открываем страницу");
+    await app.base.openAvBy();
+    logger_utils_1.default.step("Нажимаем на поле 'Марка'");
+    await app.searchByParameters.clickOnMarkButton();
+    logger_utils_1.default.step("Вводим значение", search_by_parameters_fixture_1.Marks.BMW);
+    await app.searchByParameters.inputMarkName(search_by_parameters_fixture_1.Marks.BMW);
+    logger_utils_1.default.step("Ожидаем...");
+    await app.searchByParameters.waiter();
+    logger_utils_1.default.step("Нажимаем на Энтер");
+    await app.searchByParameters.clickEnter();
+    logger_utils_1.default.step("Нажимаем на поле 'Модель'");
+    await app.searchByParameters.clickOnModelButton();
+    logger_utils_1.default.step("Выбираем модель", search_by_parameters_fixture_1.BMWModels.M8);
+    await app.searchByParameters.chooseModel(search_by_parameters_fixture_1.BMWModels.M8);
+    logger_utils_1.default.step("Нажимаем на поле 'Поколение'");
+    await app.searchByParameters.clickOnGenerationButton();
+    logger_utils_1.default.step("Выбираем поколение", search_by_parameters_fixture_1.BMWM8Generations.F91F92F93);
+    await app.searchByParameters.chooseGeneration(search_by_parameters_fixture_1.BMWM8Generations.F91F92F93);
+    logger_utils_1.default.step("Нажимаем на кнопку 'Показать *** объявлений'");
+    await app.searchByParameters.clickOnShowResultButton();
+    logger_utils_1.default.step("Ожидаем...");
+    await app.searchByParameters.waiter();
+    logger_utils_1.default.step("Делаем проверку...");
+    await app.compare.searchByMarkModelAndGenerationTest();
+});

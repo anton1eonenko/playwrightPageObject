@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "ES2018", 
+      "module": "commonjs", 
+      "outDir": "dist", // Папка для скомпилированных файлов
+      "rootDir": "src", // Папка, содержащая исходные файлы TypeScript
+      "strict": true, // Включает строгие проверки TypeScript
+      "esModuleInterop": true // Позволяет использовать интероперабельность модулей CommonJS и ES6
+    },
+    "include": ["src"] // Включает компиляцию файлов из папки src
+  }
+  

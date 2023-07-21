@@ -3,10 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "test": "npx playwright test",
+    "testMark": "npx playwright test searchByMark.spec.ts --headed",
+    "testMarkAndModel": "npx playwright test searchByMarkAndModel.spec.ts --headed",
+    "testMarkModelAndGeneration": "npx playwright test searchByMark.ModelAndGeneration.spec.ts --headed",
+    "testSortByCheap": "npx playwright test sortByCheapFilter.spec.ts --headed",
+    "testSortByExpensive": "npx playwright test sortByExpensiveFilter.spec.ts --headed"
+  },
   "author": "Anton",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.35.1"
+    "@playwright/test": "^1.36.1",
+    "@types/node": "^20.4.2",
+    "playwright": "^1.36.1",
+    "typescript": "^5.1.6"
   }
 }
