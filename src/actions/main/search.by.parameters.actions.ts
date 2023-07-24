@@ -12,13 +12,10 @@ export class SearchByParametersActions extends BaseActions {
       this.searchByParametersPage = new SearchByParametersPage(page, context);
     }
 
-
     async waiter () {
       await this.page.waitForTimeout(1000);
     }
 
-
-    
     async clickOnShowResultButton () {
       await this.searchByParametersPage.ShowResultButton.click(); 
     }
@@ -26,6 +23,7 @@ export class SearchByParametersActions extends BaseActions {
     async clickOnMarkButton () {
       await this.searchByParametersPage.Mark.click(); 
     }
+
     async inputMarkName (mark: string) {
       await this.searchByParametersPage.MarkSearchField.type(mark); 
     }
@@ -40,6 +38,7 @@ export class SearchByParametersActions extends BaseActions {
     async clickOnGenerationButton () {
       await this.searchByParametersPage.Generation.click(); 
     }
+
     async chooseGeneration (generation:string) {
       await this.searchByParametersPage.GenerationChoise(generation).click(); 
     }
@@ -47,12 +46,10 @@ export class SearchByParametersActions extends BaseActions {
     async clickOnSortingField () {
       await this.searchByParametersPage.SortingField.click(); 
     }
+    
     async chooseSortingType (parameter: string) {
       await this.searchByParametersPage.SortingType(parameter).click(); 
     }
-    
-
-
     
     async clickEnter () {
       await this.page.keyboard.press('Enter');

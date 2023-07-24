@@ -27,6 +27,7 @@ export class ResultActions extends BaseActions {
       const a = TheFirstCarInNumber[0];   
       return a
     }
+
     async getMaxPrice ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const AllpricesInString = await new ResultPage(page, context).AllPricesInBYN.allTextContents();
@@ -34,6 +35,7 @@ export class ResultActions extends BaseActions {
       const maxPrice = Math.max(...AllpricesInNumber); 
       return maxPrice
     }
+    
     async getTheFirstMaximumPriceInResults ({ page, browser }: { page: Page, browser: any }) {
       const context = await browser.newContext()
       const TheFirstPriceInString = await new ResultPage(page, context).TheFirstCar.allTextContents();       

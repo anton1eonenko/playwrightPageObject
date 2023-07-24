@@ -1,6 +1,7 @@
 import { BrowserContext, expect, Page } from '@playwright/test';
 import { BaseActions } from '../base/base.actions';
 import ComparePage from '../../pages/main/compare.page';
+import { CompareValues } from '../../fixture/search.by.parameters.fixture';
 
 export class CompareActions extends BaseActions {
   comparePage: ComparePage;
@@ -12,17 +13,17 @@ export class CompareActions extends BaseActions {
 
   async searchByMarkTest () {
     const value = await this.comparePage.searchByMarkTest.textContent(); 
-    expect(value).toContain("BMW"); 
+    expect(value).toContain(CompareValues.searchByMarkTest); 
   }
 
   async searchByMarkAndModelTest () {
     const value  = await this.comparePage.searchByMarkAndModelTest.textContent(); 
-    expect(value).toContain("M8"); 
+    expect(value).toContain(CompareValues.searchByMarkAndModelTest); 
   }
   
   async searchByMarkModelAndGenerationTest () {
     const value = await this.comparePage.searchByMarkModelAndGenerationTest.textContent(); 
-    expect(value).toContain("F91, F92, F93");
+    expect(value).toContain(CompareValues.searchByMarkModelAndGenerationTest);
   }
   
   

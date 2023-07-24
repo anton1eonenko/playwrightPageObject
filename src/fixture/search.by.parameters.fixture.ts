@@ -19,3 +19,8 @@ export enum SortingTypes {
   Expensive = 'дорогие'
 }
 
+export enum CompareValues {
+  searchByMarkTest = "BMW",
+  searchByMarkAndModelTest = "M8", 
+  searchByMarkModelAndGenerationTest = "F91, F92, F93"
+}
