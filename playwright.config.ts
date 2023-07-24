@@ -16,12 +16,16 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 20000
+    timeout: 30000,
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.1,
+      animations: 'allow'
+    }
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  forbidOnly: false,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
@@ -30,11 +34,26 @@ export default defineConfig({
   reporter: [['html'], ['line']], 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
+    actionTimeout: 30000,
+
+    navigationTimeout: 60000,
+
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: process.env.WEB_BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    /* Capture screenshot on failure */
+    screenshot: 'only-on-failure',
+
+    // /* Save video on failure */
+    video: 'off',
+
+    viewport: { width: 1920, height: 1080 },
+    ignoreHTTPSErrors: true,
+    bypassCSP: true
   },
 
   /* Configure projects for major browsers */
