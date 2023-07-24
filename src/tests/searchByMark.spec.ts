@@ -3,7 +3,7 @@ import test from './test';
 import { Marks } from '../fixture/search.by.parameters.fixture';
 import Log from '../utils/logger.utils'
 
-test('Seach By Mark', async ({ app }) => {
+test.only('Seach By Mark', async ({ app }) => {
   Log.step('1. Открываем страницу'); 
   await app.base.openAvBy();
 
