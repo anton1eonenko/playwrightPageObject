@@ -1,24 +1,22 @@
-name: Run Mabl Tests
+on: [push]
 
-on:
-  push:
-    branches:
-      - main
+name: mabl Example
 
 jobs:
   test:
+    name: mabl Test
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Run Mabl Tests
-      env:
-        MABL_API_KEY: ${{ secrets.ZyggfB03JTwYdM7DeuzJzQ }}
-      run: |
-        curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $ZyggfB03JTwYdM7DeuzJzQ" \
-        -d '{"environment_id": "your_environment_id", "plan_id": "KvTFmjFBoYUGzCh7AtzwPQ-p"}' \
-        https://api.mabl.com/events/schedule
-
+      - name: Functional test deployment
+        id: mabl-test-deployment
+        uses: mablhq/github-run-tests-action@v1
+        env:
+          # Use a "CI/CD Integration" type of mabl API key
+          MABL_API_KEY: ${{ secrets.ZyggfB03JTwYdM7DeuzJzQ }}
+          GITHUB_TOKEN: ${{ secrets.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 }}
+        with:
+          application-id: <dcWKthdtwi8dqz0UvXqzSQ-a>
+          environment-id: <Ek9C3asZtCUMIqzJw3XArg-e>
 
