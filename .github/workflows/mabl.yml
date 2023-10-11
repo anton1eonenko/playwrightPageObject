@@ -1,1 +1,24 @@
+name: Run Mabl Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Mabl Tests
+      env:
+        MABL_API_KEY: ${{ secrets.ZyggfB03JTwYdM7DeuzJzQ }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $MABL_API_KEY" \
+        -d '{"environment_id": "your_environment_id", "plan_id": "your_plan_id"}' \
+        https://api.mabl.com/events/schedule
+
 
